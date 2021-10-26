@@ -1,0 +1,39 @@
+// Gjenerimi i permutacionit duke përdorur Algoritmin Heap
+    static void heapPermutation(int[] a, int size, int n)
+    {
+       //nëse madhësia bëhet 1 atëherë printon atë të marrë
+        // permutation
+        if (size == 1)
+            printArr(a, n);
+ 
+        for (int i = 0; i < size; i++) {
+            heapPermutation(a, size - 1, n);
+ 
+            // nëse madhësia është tek, ndërroni 0-tën dmth (së pari) dhe
+             // (madhësia-1)th dmth elementi (i fundit).
+            if (size % 2 == 1) {
+                int temp = a[0];
+                a[0] = a[size - 1];
+                a[size - 1] = temp;
+            }
+ 
+            // Nëse madhësia është e barabartë, ndërroni atë dhe
+             // (madhësia-1)th dmth elementi (i fundit).
+            else {
+                int temp = a[i];
+                a[i] = a[size - 1];
+                a[size - 1] = temp;
+            }
+        }
+    }
+ 
+    // Driver code
+    public static void Main()
+    {
+ 
+        int[] a = { 1, 2, 3 };
+        heapPermutation(a, a.Length, a.Length);
+    }
+}
+
+--- Search space eshte n!
